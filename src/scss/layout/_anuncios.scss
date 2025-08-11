@@ -3,6 +3,7 @@
 @include tablet{
     .contenedor-anuncios{
         @include grid(3,2fr);
+        gap: 2rem;
     }
 }
 .anuncio{
@@ -15,17 +16,18 @@
     h3,p{
         margin: 0;
     }
-    .precio{
+}
+.precio{
         color: $verde;
         font-weight: bold;
         font-size: 3rem;
-    }
 }
 
 .iconos-caracteristicas{
     display: flex;
     list-style: none;
     padding: 0;
+    max-width: 40rem;
 
     li{
         flex: 1;

@@ -9,7 +9,7 @@
 <body>
     
     
-    <header class="header <?php echo isset($inicio) ? 'inicio' : ''?>">
+    <header class="header <?php echo $inicio ? 'inicio' : ''?>">
         <div class="contenedor contenido-header">
             <!-- Apertura Barra -->
             <div class="barra">

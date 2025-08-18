@@ -43,4 +43,21 @@
             color: $blanco;
         }
     }
+
+    table.propiedades{
+        thead{
+            background-color: $verde;
+
+            th{
+                color: $blanco;
+            }
+        }
+
+        tbody{
+
+            td{
+                color: $blanco;
+            }
+        }
+    }
 }

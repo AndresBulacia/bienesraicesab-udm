@@ -111,7 +111,7 @@
             if ($resultado) {
                 // echo 'Cargado correctamente';
                 // Redireccionar al usuario
-                header('Location: /admin');
+                header('Location: /admin?resultado=1');
             }
         }   
     }

@@ -174,7 +174,7 @@
                     name="habitaciones" 
                     placeholder="Ej: 3" 
                     min="1" 
-                    max="5" 
+                    max="10" 
                     value="<?php echo $habitaciones; ?>"
                 >
 

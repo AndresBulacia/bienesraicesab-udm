@@ -22,6 +22,7 @@
     
     // Ejecuta el código después de que el usuario envía el formulario.
     if($_SERVER["REQUEST_METHOD"] === "POST") {
+
         // echo '<pre>';
         // var_dump($_POST);
         // '</pre>';
@@ -34,6 +35,9 @@
         $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']);
         $vendedores_id = mysqli_real_escape_string($db, $_POST['vendedor']);
         $creado = date('Y/m/d');
+
+        // Asignar files hacia una variable
+        $imagen = $_FILES['imagen'];
 
         if (!$titulo) {
             $errores[] = "Debes añadir un titulo.";
@@ -63,6 +67,17 @@
             $errores[] = "Debes seleccionar un vendedor.";
         }
 
+        if (!$imagen) {
+            $errores[] = "La imagen es obligatoria.";
+        }
+
+        // Validar por tamaño de imagen (100Kb máximo)
+        $medida = 1000 * 100;
+
+        if ($imagen['size'] > $medida) {
+            $error[] = "La imagen es muy pesada";
+        }
+
         // echo '<pre>';
         // var_dump($errores);
         // '</pre>';
@@ -82,9 +97,7 @@
                 // Redireccionar al usuario
                 header('Location: /admin');
             }
-        }
-
-        
+        }   
     }
 
 
@@ -97,7 +110,7 @@
         <h1>Crear</h1>
 
         
-        <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información General</legend>
 

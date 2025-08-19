@@ -18,9 +18,34 @@
         if (!$password) {
             $errores[] = "El Password es obligatorio.";
         }
-
+        
         if (empty($errores)) {
+
+            // Revisar si el usuario existe
+            $query = "SELECT * FROM usuarios WHERE email = '{$email}';";
+            $resultado = mysqli_query($db, $query);
+
             
+            if ($resultado->num_rows) {
+                
+                // Revisar que el password sea correcta
+                $usuario = mysqli_fetch_assoc($resultado);
+                // var_dump($usuario['password']);
+
+                // Verificar si el password es correcto o no
+                $auth = password_verify($password, $usuario['password']);
+                
+                if ($auth) {
+                    // Usuario autenticado
+                    session_start();
+                } else {
+                    $errores[] = "Contraseña incorrecta.";
+                }
+                
+                
+            }else{
+                $errores[] = "El usuario no existe";
+            }
         }
     }
 

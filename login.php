@@ -38,6 +38,13 @@
                 if ($auth) {
                     // Usuario autenticado
                     session_start();
+                    
+                    // Llenar el arreglo de la sesión
+                    $_SESSION['usuario'] = $usuario['email'];
+                    $_SESSION['login'] = true;
+
+                    
+
                 } else {
                     $errores[] = "Contraseña incorrecta.";
                 }
